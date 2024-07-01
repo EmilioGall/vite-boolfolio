@@ -1,11 +1,15 @@
 <script>
 import axios from 'axios';
+
+import PaginationNavBar from './PaginationNavBar.vue'
 import CardComponent from './CardComponent.vue';
 
 export default {
+
    components: {
 
-      CardComponent
+      CardComponent,
+      PaginationNavBar,
 
    },
 
@@ -44,16 +48,27 @@ export default {
                // console.log(this.projects);
 
             });
+      },
+
+      changePage(newPage) {
+
+         this.curPage = newPage;
+
+         this.getProjects();
+
       }
+
    }
 }
 </script>
 
 <template>
 
-   <div class="container">
+   <div class="container d-flex flex-column align-items-center">
 
-      <h1 class="text-center text-primary my-3">Projects Cards</h1>
+      <h1 class="text-primary my-3">Projects Cards</h1>
+
+      <PaginationNavBar class="my-3" :lastPage="lastPage" :curPage="curPage" @change-page="changePage"/>
    
       <div class="row row-cols-3 g-3 mb-3">
 
