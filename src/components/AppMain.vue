@@ -13,6 +13,9 @@ export default {
       return {
 
          projects: [],
+         curPage: 1,
+         lastPage: 1,
+
 
       }
    },
@@ -27,10 +30,16 @@ export default {
 
       getProjects() {
          axios
-            .get('http://127.0.0.1:8000/api/projects')
+            .get('http://127.0.0.1:8000/api/projects', {
+               params: {
+                  page: this.curPage,
+               }
+            })
             .then((resp) => {
 
-               this.projects = resp.data.results;
+               this.projects = resp.data.results.data;
+
+               this.lastPage = resp.data.results.last_page;
 
                // console.log(this.projects);
 
