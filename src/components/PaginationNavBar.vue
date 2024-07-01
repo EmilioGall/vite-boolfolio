@@ -25,26 +25,30 @@ export default {
 
          <li class="page-item">
 
-            <a class="page-link" href="#" aria-label="Previous">
+            <button class="page-link" :disabled="curPage == 1" @click.prevent="$emit('prevPage')"
+               aria-label="Next">
 
                <span aria-hidden="true">&laquo;</span>
 
-            </a>
+            </button>
 
          </li>
 
          <li class="page-item" v-for="page in lastPage">
+
             <button class="page-link" :class="curPage == page ? 'active' : ''"
                @click.prevent="$emit('changePage', page)">
                {{ page }}
             </button>
+
          </li>
 
          <li class="page-item">
 
-            <a class="page-link" href="#" aria-label="Next">
+            <button class="page-link" :disabled="curPage == lastPage" @click.prevent="$emit('nextPage')"
+               aria-label="Next">
                <span aria-hidden="true">&raquo;</span>
-            </a>
+            </button>
 
          </li>
 

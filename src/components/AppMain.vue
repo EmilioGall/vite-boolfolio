@@ -56,6 +56,30 @@ export default {
 
          this.getProjects();
 
+      },
+
+      nextPage() {
+
+         if (this.curPage != this.lastPage) {
+
+            this.curPage++;
+
+            this.getProjects();
+
+         }
+
+      },
+
+      prevPage() {
+
+         if (this.curPage != 1) {
+
+            this.curPage--;
+
+            this.getProjects();
+
+         }
+
       }
 
    }
@@ -68,13 +92,14 @@ export default {
 
       <h1 class="text-primary my-3">Projects Cards</h1>
 
-      <PaginationNavBar class="my-3" :lastPage="lastPage" :curPage="curPage" @change-page="changePage"/>
-   
+      <PaginationNavBar class="my-3" :lastPage="lastPage" :curPage="curPage" @change-page="changePage"
+         @next-page="nextPage" @prev-page="prevPage"/>
+
       <div class="row row-cols-3 g-3 mb-3">
 
          <div class="" v-for="project in projects">
 
-            <CardComponent :project="project"/>
+            <CardComponent :project="project" />
 
          </div>
 

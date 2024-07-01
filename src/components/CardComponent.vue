@@ -31,7 +31,7 @@ export default {
 
             <h5 class="card-title fs-4 fw-bold">{{ project.title }}</h5>
 
-            <ul class="ps-0 row gap-1" v-if="project.technologies">
+            <ul class="ps-2 row gap-1" v-if="project.technologies">
 
                <li class="col-3 badge" :class="tech.name == 'html' || tech.name == 'vite' ? 'text-white' : 'text-black' " :style='`background-color: ${tech.color}`'
                   v-for="tech in project.technologies">
