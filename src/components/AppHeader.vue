@@ -5,11 +5,23 @@ export default {
    data() {
       return {
 
-         navNamesArray: [
-            'Home',
-            'Projects',
-            'Contacts'
+         navItemsArray: [
+            {
+               routeName: 'home',
+               routeTitle: 'Home'
+            },
+            {
+               routeName: 'projects',
+               routeTitle: 'Projects',
+            },
+            {
+               routeName: 'contacts',
+               routeTitle: 'Contacts'
+            },
+
          ],
+
+         curRouteName: 'home',
 
       }
    },
@@ -21,10 +33,15 @@ export default {
 
    methods: {
 
-      //
+      activePage(routeName) {
+
+         this.curRouteName = routeName;
+
+      }
 
    }
 }
+
 </script>
 
 <template>
@@ -43,8 +60,12 @@ export default {
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-               <li class="nav-item" v-for="name in navNamesArray">
-                  <a class="nav-link active" aria-current="page" href="#">{{ name }}</a>
+               <li class="nav-item" v-for="item in navItemsArray">
+
+                  <router-link :to="{ name: item.routeName }" class="nav-link" @click.prevent="activePage(item.routeName)" :class="item.routeName == curRouteName ? 'active' : ''">
+                     {{ item.routeTitle }}
+                  </router-link>
+
                </li>
 
             </ul>
