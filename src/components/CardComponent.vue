@@ -11,7 +11,7 @@ export default {
 
       control() {
 
-         console.log(this.project.type.name);
+         console.log(this.project.slug);
 
       }
    }
@@ -33,8 +33,9 @@ export default {
 
             <ul class="ps-2 row gap-1" v-if="project.technologies">
 
-               <li class="col-3 badge" :class="tech.name == 'html' || tech.name == 'vite' ? 'text-white' : 'text-black' " :style='`background-color: ${tech.color}`'
-                  v-for="tech in project.technologies">
+               <li class="col-3 badge"
+                  :class="tech.name == 'html' || tech.name == 'vite' ? 'text-white' : 'text-black'"
+                  :style='`background-color: ${tech.color}`' v-for="tech in project.technologies">
 
                   {{ tech.name }}
 
@@ -51,8 +52,10 @@ export default {
 
          </div>
 
-         <a href="#" class="btn btn-primary w-50">Details</a>
-
+         <router-link :to="{ name: 'project-details', params: { slug: project.slug } }" class="btn btn-primary w-50">
+            Details
+         </router-link>
+         
       </div>
 
    </div>
