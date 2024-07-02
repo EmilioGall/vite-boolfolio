@@ -1,4 +1,6 @@
 <script>
+import { store } from '../store.js';
+
 export default {
 
    props: {
@@ -7,12 +9,25 @@ export default {
 
    },
 
+   data() {
+      return {
+
+         store
+
+      }
+   },
+
    methods: {
 
       control() {
 
          console.log(this.project.slug);
 
+      },
+
+      getCurSlug() {
+
+         this.store.curSlug = this.project.slug;
       }
    }
 
@@ -33,8 +48,7 @@ export default {
 
             <ul class="ps-2 row gap-1" v-if="project.technologies">
 
-               <li class="col-3 badge"
-                  :class="tech.name == 'html' || tech.name == 'vite' ? 'text-white' : 'text-black'"
+               <li class="col-3 badge" :class="tech.name == 'html' || tech.name == 'vite' ? 'text-white' : 'text-black'"
                   :style='`background-color: ${tech.color}`' v-for="tech in project.technologies">
 
                   {{ tech.name }}
@@ -52,10 +66,11 @@ export default {
 
          </div>
 
-         <router-link :to="{ name: 'project-details', params: { slug: project.slug } }" class="btn btn-primary w-50">
+         <router-link :to="{ name: 'project-details', params: { slug: project.slug } }" class="btn btn-primary w-50"
+            @click.prevent="getCurSlug">
             Details
          </router-link>
-         
+
       </div>
 
    </div>
