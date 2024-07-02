@@ -1,8 +1,8 @@
 <script>
 import axios from 'axios';
 
-import PaginationNavBar from './PaginationNavBar.vue'
-import CardComponent from './CardComponent.vue';
+import PaginationNavBar from '../components/PaginationNavBar.vue'
+import CardComponent from '../components/CardComponent.vue';
 
 export default {
 
