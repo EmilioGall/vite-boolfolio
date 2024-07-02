@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { store } from '../store.js';
 
 import PaginationNavBar from '../components/PaginationNavBar.vue'
 import CardComponent from '../components/CardComponent.vue';
@@ -16,6 +17,7 @@ export default {
    data() {
       return {
 
+         store,
          projects: [],
          curPage: 1,
          lastPage: 1,
@@ -34,7 +36,7 @@ export default {
 
       getProjects() {
          axios
-            .get('http://127.0.0.1:8000/api/projects', {
+            .get(`${this.store.apiURL}/api/projects`, {
                params: {
                   page: this.curPage,
                }
