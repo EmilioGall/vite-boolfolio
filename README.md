@@ -1,5 +1,3 @@
-Here is the README.md file for the "vite-boolfolio" project:
-
 # Vite Boolfolio
 
 A simple Vue.js project built with Vite, designed to manage and display a portfolio of projects. This application allows users to create, manage, and showcase their portfolio items.
